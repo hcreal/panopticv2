@@ -1,0 +1,16 @@
+﻿@model panopticApp.Models.queryClass
+
+@using (Html.BeginForm("Index", "Home/Index", FormMethod.Post))
+{
+    <div class="jumbotron">
+        <h1>Panoptic Search</h1>
+        <p> This is a search engine.</p>
+        <p>@ViewBag.Test</p>
+        <div class="row">
+            @Html.TextBoxFor(model => model.Query)
+            <input type="submit" value="Submit">
+            @Html.CheckBoxFor(x => x.fileCheck)
+            <label>Check to Search by Author</label>
+        </div>
+    </div>
+}

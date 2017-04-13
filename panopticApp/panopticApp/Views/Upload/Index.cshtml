@@ -1,0 +1,13 @@
+﻿@model panopticApp.Models.POCOs.docs
+
+@using (Html.BeginForm("Index", "Upload/Index", FormMethod.Post, new { enctype = "multipart/Form-data" } ))
+{
+    <div class="jumbotron">
+        <h1>Panoptic Search</h1>
+        <p> Search for new files!</p>
+        <p>@ViewBag.Test</p>
+        <div class="row">
+            <input type="submit" value="upload"/>           
+        </div>
+    </div>
+}

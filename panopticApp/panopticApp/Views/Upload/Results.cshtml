@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Results";
+}
+
+@model panopticApp.Models.queryClass
+
+<h2>Results</h2>
+
+<div>
+    <p>
+    @ViewBag.Test
+        @foreach (var item in Model.documentList)
+        {
+            <p>@item</p>
+        }
+</div>

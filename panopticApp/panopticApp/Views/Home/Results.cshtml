@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Results";
+}
+
+@*THIS IS WHY WE CREATED THE QUERY AND STUCK IT WITH THE MODEL SO THAT WE COULD EXPLICITLY CALL THE MODEL HERE.*@
+@model panopticApp.Models.queryClass
+
+<h2>Results from searching for: @Model.Query </h2><hr />
+
+<div>
+    @if (Model.docList.Count != 0)
+    {
+
+        @*INTAILIZING THE NUMBERS OUTSIDE OF THE FOR LOOPS BECAUSE WITH BREAK AND CONTNUE STATEMENTS THE NUMBERS WOULD NEVER GO UP AND RESTART AT ZERO AGAIN*@
+        int k = 0;
+        int l = 0;
+        int r = 0;
+        int p = 0;
+        int w = 0;
+        var i = 1;
+        @*CHECKS THAT WE HAVE DOCUMENTS*@
+        for (int j = 0; j < Model.docList.Count; j++)
+        {   
+            @*IN THE FOR LOOP WE HAVE ANOTHER VARIABLE THAT IS SET TO THE OUTSIDE NUMBERS TO INSURE THAT IT KEEPS INCREMENTING EVEN WITH THE BREAK STATEMENTS*@
+            for (int path = w; path < Model.pathList.Count;)
+            {
+                    @*SINCE WE ARE USING LIST WE CALL THE LIST AND THEN USE THE COUNT TO DISPLAY THE CORRECT ONE IN NUMERICAL ORDER*@
+                    var y = Model.pathList[path].ToString();
+                    for (int auth = k; auth < Model.authorList.Count;)
+                    {
+                        var a = Model.authorList[auth];
+                        for (int date = l; date < Model.dateList.Count;)
+                        {
+                            var d = Model.dateList[date];
+                            for (int type = r; type < Model.typeList.Count;)
+                            {
+                                var t = Model.typeList[type];
+                                for (int content = p; content < Model.contentList.Count;)
+                                {
+                                    var c = Model.contentList[content];
+                                <p><b>Author:</b> @a, <b>Date:</b> @d, <b>File Type:</b> @t, <br /> <b>Content:</b> @c <br /><b>File Path:</b><a href="@ViewBag.Paths[p]">@ViewBag.Paths[p]</a></p><hr />
+                                @*THIS IS WHERE WE INCREMENT EACH FOR LOOP BEFORE THE BREAK. WE BREAK SO THAT ONE RECORD IS SHOWN*@
+                                p++;
+                                break;
+                            }
+                            r++;
+                            break;
+                        }
+                        l++;
+                        break;
+                    }
+                    k++;
+                    break;
+                }
+                w++;
+                break;
+            }
+            i++;
+            continue;
+        }
+    }
+    else
+    {
+        <h3>No Results Found</h3>
+    }
+</div>
